@@ -10,6 +10,7 @@ import DashboardPage from './pages/DashboardPage';
 // import components
 import Navbar from './components/common/navbar';
 import Footer from './components/common/footer';
+import Features from './components/common/Features';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/setup-profile" element={<SetupProfilePage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
+      <Features />
       <Footer />
     </Router>
   )
