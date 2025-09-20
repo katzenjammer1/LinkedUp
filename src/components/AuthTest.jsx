@@ -8,7 +8,6 @@ import { getUserProfile } from "../lib/userService";
 const AuthTest = () => {
   // STATE MANAGEMENT
   // react hooks to manage component state (basically data that can change)
-
   // states to track if user is logged in
   const [user, setUser] = useState(null); // null = not logged in, object = user data
   const [loading, setLoading] = useState(true); // Shows loading while checking auth status
