@@ -25,8 +25,6 @@ function App() {
             <Route path="/setup-profile" element={<SetupProfilePage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
-      <Features />
-      <Footer />
     </Router>
   )
 }
