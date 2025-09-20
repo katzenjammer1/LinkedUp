@@ -19,9 +19,9 @@ export const getUserProfile = async (userId) => {
   try {
     const userDoc = await getDoc(doc(db, COLLECTIONS.USERS, userId));
     if (userDoc.exists()) {
-      return { sucess: true, data: { id: userDoc.id, ...userDoc.data() } };
+      return { success: true, data: { id: userDoc.id, ...userDoc.data() } };
     } else {
-      return { sucess: false, error: "User is not found sowwies" };
+      return { success: false, error: "User is not found sowwies" };
     }
   } catch (error) {
     console.error("Error getting user profile:", error);
