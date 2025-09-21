@@ -121,6 +121,7 @@ export const COLLECTIONS = {
   GROUPS: "groups",
   ACTIVITIES: "activities",
   MESSAGES: "messages",
+  CHATS: "chats",
 };
 
 export const GROUP_STATUS = {
