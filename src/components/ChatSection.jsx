@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { listenToUserChats, listenToChatMessages, sendChatMessage } from "../lib/chatService";
+import "./ChatsSection.css";
 
 export default function ChatsSection({ user }) {
   const [chats, setChats] = useState([]);
@@ -28,29 +29,51 @@ export default function ChatsSection({ user }) {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   if (activeChat) {
     return (
       <div className="chat-view">
         <div className="chat-header">
-          <button onClick={() => setActiveChat(null)}>← Back</button>
-          <h3>{activeChat.name}</h3>
+          <button className="back-btn" onClick={() => setActiveChat(null)}>
+            ← Back
+          </button>
+          <h3 className="chat-title">{activeChat.name}</h3>
         </div>
 
         <div className="chat-messages">
-          {messages.map((msg) => (
-            <div key={msg.id} className={msg.senderId === user.uid ? "own" : "other"}>
-              <p>{msg.senderName}: {msg.text}</p>
+          {messages.length > 0 ? (
+            messages.map((msg) => (
+              <div key={msg.id} className={`message ${msg.senderId === user.uid ? "message-own" : "message-other"}`}>
+                <div className="message-content">
+                  <span className="message-sender">{msg.senderName}</span>
+                  <p className="message-text">{msg.text}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="no-messages">
+              <p>No messages yet. Start the conversation!</p>
             </div>
-          ))}
+          )}
         </div>
 
         <div className="chat-input">
           <input
+            className="message-input"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
             placeholder="Type a message..."
           />
-          <button onClick={handleSend}>Send</button>
+          <button className="send-btn" onClick={handleSend}>
+            Send
+          </button>
         </div>
       </div>
     );
@@ -59,18 +82,33 @@ export default function ChatsSection({ user }) {
   // Chat list view
   return (
     <div className="chat-list">
-      <h2>Your Chats</h2>
-      {chats.length ? (
-        <ul>
+      <div className="chat-list-header">
+        <h2>Your Chats</h2>
+        <span className="chat-count">{chats.length}</span>
+      </div>
+      {chats.length > 0 ? (
+        <div className="chats-container">
           {chats.map((chat) => (
-            <li key={chat.id} onClick={() => setActiveChat(chat)}>
-              <h4>{chat.name}</h4>
-              <p>{chat.lastMessage?.text || "No messages yet"}</p>
-            </li>
+            <div key={chat.id} className="chat-item" onClick={() => setActiveChat(chat)}>
+              <div className="chat-avatar">
+                <div className="avatar-placeholder">
+                  {chat.name ? chat.name.charAt(0).toUpperCase() : "?"}
+                </div>
+              </div>
+              <div className="chat-info">
+                <h4 className="chat-name">{chat.name}</h4>
+                <p className="chat-preview">
+                  {chat.lastMessage?.text || "No messages yet"}
+                </p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <p>No chats yet</p>
+        <div className="no-chats">
+          <p>No chats yet</p>
+          <small>Start chatting with your matches!</small>
+        </div>
       )}
     </div>
   );
