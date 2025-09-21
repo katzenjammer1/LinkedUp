@@ -57,19 +57,25 @@ export default function DashboardPage() {
 
   // Start one-on-one chat with a match
   const handleChatClick = async (match) => {
-    if (!user) return;
+  if (!user || !profile) return;
 
-    const chatId = await getOrCreateChat(user.uid, match.id, match.name);
+  const chatId = await getOrCreateChat(
+    user.uid, 
+    match.id, 
+    match.name,
+    profile.name || user.displayName || 'Unknown User'
+  );
 
-    setActiveChats(prev => {
-      if (!prev.some(c => c.id === chatId)) {
-        return [...prev, { id: chatId, name: match.name }];
-      }
-      return prev;
-    });
+  setActiveChats(prev => {
+    if (!prev.some(c => c.id === chatId)) {
+      return [...prev, { id: chatId, name: match.name }];
+    }
+    return prev;
+  });
 
-    setActiveChat({ id: chatId, name: match.name });
-  };
+  setActiveChat({ id: chatId, name: match.name });
+  setSelectedCard(null);
+};
 
   if (loading) {
     return (
@@ -91,7 +97,6 @@ export default function DashboardPage() {
       </div>
     );
   }
-
   const matchImages = matches.map(m => ({
     id: m.id,
     img: m.photoURL || "https://placehold.co/200x200/FF6B6B/FFFFFF?text=No+Photo",
@@ -131,7 +136,6 @@ export default function DashboardPage() {
             </div>
           </div>
         </section>
-
         {/* Matches Section */}
         <section className="dashboard-card matches-card">
           <div className="card-header">
@@ -156,12 +160,10 @@ export default function DashboardPage() {
             )}
           </div>
         </section>
-
         {/* Chats Section */}
         <section className="dashboard-card chats-card">
           <ChatsSection user={user} chats={activeChats} />
         </section>
-
         {/* Recommended Places */}
         <section className="dashboard-card places-card">
           <div className="card-header">
@@ -183,7 +185,6 @@ export default function DashboardPage() {
         </div>
         </section>
       </div>
-
       {/* Global Modal */}
       <AnimatePresence>
         {selectedCard && (
