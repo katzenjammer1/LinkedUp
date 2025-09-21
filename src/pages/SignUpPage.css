@@ -1,4 +1,16 @@
 /* Sign Up Page Styles */
+body:has(.signup-container) {
+  display: block !important;
+  place-items: unset !important;
+  background-color: #134443;
+  background-image: url('../assets/Group 7.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 .signup-container {
   width: 100vw;
   height: 100vh;

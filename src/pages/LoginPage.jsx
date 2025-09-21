@@ -112,12 +112,7 @@ const LoginPage = () => {
     return (
         <div className="login-container">
             {/* Background Image */}
-            <div className="background-image">
-                <img 
-                    src={Group7} 
-                    alt="Background" 
-                />
-            </div>
+            
             
             {/* Login Card */}
             <div className="login-card-container">

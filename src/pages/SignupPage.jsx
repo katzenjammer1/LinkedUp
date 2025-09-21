@@ -102,7 +102,6 @@ const SignUpPage = () => {
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-
     // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -110,8 +109,6 @@ const SignUpPage = () => {
             ...prev,
             [name]: value
         }));
-        
-        // Clear specific error when user starts typing
         if (errors[name]) {
             setErrors(prev => ({
                 ...prev,
@@ -216,14 +213,6 @@ const SignUpPage = () => {
 
     return (
         <div className="signup-container">
-            {/* Background Image */}
-            <div className="signup-background-image">
-                <img 
-                    src={Group7} 
-                    alt="Background" 
-                />
-            </div>
-            
             {/* Sign Up Card */}
             <div className="signup-card-container">
                 <div className="signup-card">

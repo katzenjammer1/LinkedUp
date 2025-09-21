@@ -1,4 +1,9 @@
 /* HomePage Styles */
+body:has(.homepage-container) {
+  display: block !important;
+  place-items: unset !important;
+  padding: unset !important
+}
 .homepage-container {
   width: 100%;
   min-height: 100vh;
@@ -14,7 +19,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 8vh;
+  padding-top: 2rem;
   overflow: hidden;
   z-index: 1;
 }
