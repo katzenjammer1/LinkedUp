@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PillNav from '../../PillNav';
 import { useAuth } from "../../context/AuthContext";
 import { logOut } from "../../lib/authService";
+import './Navbar.css'; 
 
 const Navbar = () => {
     const location = useLocation();
     const { user } = useAuth();
     const navigate = useNavigate();
-    
+    useEffect(() => {
+        if (location.pathname === '/logout' && user) {
+            handleLogout();
+        }
+    }, [location.pathname, user]);
     // Create navigation items based on auth state
     const createNavItems = () => {
         const baseItems = [
-            { label: 'Home', href: '/' }, 
+            { label: 'Home', href: '/' }, // This will be the logo link
             { label: 'Learn', href: '/learn' },
         ];
         
         if (user) {
             baseItems.push(
                 { label: "Dashboard", href: "/dashboard" },
-                { label: "Logout", href: "#", onClick: handleLogout }
+                { label: "Logout", href: "/logout"}
             );
         } else {
             baseItems.push(
@@ -57,7 +62,7 @@ const Navbar = () => {
                 hoveredPillTextColor="#ffffff"
                 pillTextColor="#000000"
                 onMobileMenuClick={() => {
-        
+                    // Handle mobile menu interactions if needed
                 }}
             />
         </div>
