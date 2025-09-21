@@ -252,7 +252,10 @@ export default function DashboardPage() {
               {selectedCard.preferredActivities.length > 0 && (
                 <p>Activities: {selectedCard.preferredActivities.join(', ')}</p>
               )}
-              <button onClick={() => setSelectedCard(null)}>Close</button>
+              <div className="modal-actions">
+                <button onClick={() => setSelectedCard(null)}>Chat</button>
+                <button onClick={() => setSelectedCard(null)}>Close</button>
+              </div>
             </motion.div>
           </motion.div>
         )}

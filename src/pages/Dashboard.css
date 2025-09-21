@@ -384,3 +384,9 @@ body:has(.dashboard-container) {
     font-size: 2rem;
   }
 }
+.modal-actions {
+  display: flex;
+  justify-content: center; /* optional */
+  gap: 1rem; /* adds space between buttons */
+  margin-top: 1rem; /* space above buttons */
+}
