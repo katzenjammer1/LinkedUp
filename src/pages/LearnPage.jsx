@@ -67,7 +67,7 @@ const LearnPage = () => {
         <div className="team-mission">
           <h2 className="mission-title">Our Mission</h2>
           <p className="mission-text">
-            We believe that everyone deserves meaningful connections and friendships. Our platform is designed to bridge the gap between people who share similar interests and are looking to expand their social circle. By combining smart matching algorithms with local community focus, we're making it easier than ever to find your next great friendship.
+            LinkedUp is a way to be able to make friends in new cities. You have many dating apps these days targeting the crowds for making friends but they are known for their matchmaking rather than matching with friends. LinkedUp allows users to be able to match with a larger group of friends and attend events together. Whether you hit it off or not, LinkedUp will help you find your community. 
           </p>
         </div>
       </div>
