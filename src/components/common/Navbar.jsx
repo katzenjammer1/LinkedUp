@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, useNavigate, useLocation} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import PillNav from '../../PillNav';
 import { useAuth } from "../../context/AuthContext";
 import { logOut } from "../../lib/authService";
 
@@ -7,32 +8,33 @@ const Navbar = () => {
     const isActive = (path) =>  location.pathname === path;
     const { user } = useAuth();
     const navigate = useNavigate();
-
+    const Navitems=[
+    { label: 'Home', href: '/' },
+    { label: 'Learn', href: '/learn' },
+    { label: 'Log In', href: '/login' },
+  ];
+   if (user) {
+    Navitems.push({ label: "Dashboard", href: "/dashboard" });
+  }else {
+    Navitems.push({ label: "Sign Up", href: "/signup" });
+  }
     const handleLogout = async () => {
         await logOut();
         navigate("/")
     };
     return (
-        <div>
-            <h1>
-                Logo
-            </h1>
-            <Link to="/">
-                Home
-            </Link>
-            <Link to="/learn">
-                Learn
-            </Link>
-            {user ? (
-                <>
-                    <Link to="/dashboard">Dashboard</Link> |{" "}
-                    <button onClick={handleLogout}>Logout</button>
-                </>
-            ) : (
-                <>
-                    <Link to="/login">Login</Link><Link to="/signup">Sign Up</Link>
-                </>
-            )}
+        <div className= 'page-navigation'>
+            <PillNav
+  logoAlt="Company Logo"
+  items={Navitems}
+  activeHref={isActive}
+  className="custom-nav"
+  ease="power2.easeOut"
+  baseColor="#000000"
+  pillColor="#ffffff"
+  hoveredPillTextColor="#ffffff"
+  pillTextColor="#000000"
+/>
         </div>
     )
 };

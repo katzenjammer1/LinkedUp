@@ -1,4 +1,5 @@
 #root {
+  background: #134443;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +40,39 @@
 
 .read-the-docs {
   color: #888;
+}
+.page-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.page-header {
+  text-align: center;
+  padding: 2rem 2rem 1rem 2rem;
+  background: var(--background);
+  position: relative;
+  z-index: 3;
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.page-navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.page-content {
+  flex: 1;
+  position: relative;
+  z-index: 2;
 }
