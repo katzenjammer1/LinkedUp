@@ -1,0 +1,386 @@
+/* Dashboard.css */
+
+/* Override global body centering for dashboard */
+body:has(.dashboard-container) {
+  display: block;
+  place-items: unset;
+}
+
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  /* Override global body centering */
+  display: block;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffff;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: #ffff;
+  margin: 0;
+}
+
+/* Grid Layout - 3-column layout with full-width places card */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card Base Styles */
+.dashboard-card {
+  background: #062726;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f5f9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffff;
+  margin: 0;
+}
+
+.profile-content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.profile-avatar {
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e5e7eb;
+}
+
+.profile-details h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.profile-age {
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.profile-bio {
+  color: #fff;
+  font-style: italic;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.profile-tags {
+  margin-top: 1rem;
+}
+
+.tag-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: #FFD684;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tag-more {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.edit-btn {
+  background: #F67E04CC;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+  background: #fbbf24;
+}
+
+/* Matches Card */
+.matches-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* or auto for dynamic height */
+}
+
+.match-count {
+  background: #F67E04CC;
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.stack-container {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  width: 100%;
+  min-height: 300px;       /* ensures some height for vertical centering */
+  position: relative;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: visible;       /* allow cards to spread outside container if needed */
+}
+
+.no-matches {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.no-matches p {
+  margin: 0.5rem 0;
+}
+.stats-card {
+    color: #fff;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: #FFD684;
+  border-radius: 12px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Places Card - spans all 3 columns */
+.places-card {
+  grid-column: 1 / -1; /* Spans all columns */
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.place-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.place-item:hover {
+  transform: translateY(-2px);
+}
+
+.place-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.place-info {
+  padding: 1rem;
+}
+
+.place-info h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFD684;
+  margin: 0 0 0.25rem 0;
+}
+
+.place-category {
+  color: #fff;
+  font-size: 0.875rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.place-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.rating-stars {
+  color: #fbbf24;
+  font-size: 0.875rem;
+}
+
+.rating-number {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.place-description {
+  font-size: 0.875rem;
+  color: #fff;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.view-all-btn {
+  background: #F67E04CC;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-all-btn:hover {
+  background: #fbbf24;
+  color: white;
+}
+
+/* Loading States */
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #fbbf24;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dashboard-error {
+  text-align: center;
+  padding: 3rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+  }
+  
+  .places-card {
+    grid-column: 1 / -1; /* Still spans all columns */
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 500px;
+  }
+  
+  .places-card {
+    grid-column: 1; /* Single column on mobile */
+  }
+  
+  .profile-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+}
