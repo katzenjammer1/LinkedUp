@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getUserProfile } from "../lib/userService";
 import { findMatches } from "../lib/matchingService";
@@ -8,6 +9,7 @@ import "./Dashboard.css";
 
 export default function DashboardPage() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -70,6 +72,14 @@ export default function DashboardPage() {
     loadDashboard();
   }, [user]);
 
+  const handleEditProfile = () => {
+    navigate('/setup-profile');
+  };
+
+  const handleSetupProfile = () => {
+    navigate('/setup-profile');
+  };
+
   if (loading) {
     return (
       <div className="dashboard-loading">
@@ -84,7 +94,9 @@ export default function DashboardPage() {
       <div className="dashboard-error">
         <h2>Profile Setup Required</h2>
         <p>Please set up your profile to get started.</p>
-        <button className="setup-profile-btn">Set Up Profile</button>
+        <button className="setup-profile-btn" onClick={handleSetupProfile}>
+          Set Up Profile
+        </button>
       </div>
     );
   }
@@ -106,7 +118,9 @@ export default function DashboardPage() {
         <section className="dashboard-card profile-card">
           <div className="card-header">
             <h2>Your Profile</h2>
-            <button className="edit-btn">Edit</button>
+            <button className="edit-btn" onClick={handleEditProfile}>
+              Edit
+            </button>
           </div>
           <div className="profile-content">
             <div className="profile-avatar">
@@ -158,7 +172,9 @@ export default function DashboardPage() {
               <div className="no-matches">
                 <p>No matches found yet.</p>
                 <p>Try updating your preferences!</p>
-                <button className="update-preferences-btn">Update Preferences</button>
+                <button className="update-preferences-btn" onClick={handleEditProfile}>
+                  Update Preferences
+                </button>
               </div>
             )}
           </div>
