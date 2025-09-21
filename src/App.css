@@ -1,6 +1,12 @@
-#root {
-  background: #134443;
-  max-width: 1280px;
+.root {
+  --background-color: #134443;
+  --accent-color: #f67e04;
+  --text-color: #ffffff;
+  --window-color: #ffd684;
+  --building-dark-1: #062726;
+  --building-dark-2: #092e2c;
+  --building-dark-3: #093331;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -41,38 +47,20 @@
 .read-the-docs {
   color: #888;
 }
-.page-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 2;
-}
 
-.page-header {
-  text-align: center;
-  padding: 2rem 2rem 1rem 2rem;
-  background: var(--background);
-  position: relative;
-  z-index: 3;
-}
-
-.page-title {
-  font-size: 3rem;
-  font-weight: 400;
-  color: var(--primary);
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
 .page-navigation {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 }
-
-.page-content {
-  flex: 1;
-  position: relative;
+.positioned-image {
+    position: absolute; /* or relative, fixed, sticky */
+    top: 20px;
+    left: 50px;
+    z-index: 1;
+}
+.overlay-image{
+left: 10px;
+top: 140px;
   z-index: 2;
 }
