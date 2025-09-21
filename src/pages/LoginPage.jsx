@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signIn, signInWithGoogle } from '../lib/authService';
+import Group7 from '../assets/Group 7.png';
+import "./Dashboard.css";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -84,8 +86,17 @@ const LoginPage = () => {
     };
 
     return (
-        <div style={{  width: '1440px', height: '900px', backgroundColor: '#134443'}}>
-            <h1>Sign in to your LinkedUp account</h1>
+        <div style={{  width: '1440px', height: '900px', backgroundColor: '#134443'}}> 
+              <div className="positioned-image" style={{
+      position: 'absolute',
+      width: '1440px',
+      height: '900px',
+      zIndex: 0}}>
+         <img src={Group7} alt="Group Image" height={800} width={1490}/>
+        </div>
+            <section className="dashboard-card profile-card" style={{position: 'absolute', height: '660px',width: '500px', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <div className="card-header">
+            <h1 style={{justifyContent: 'center'}}>Sign in to your LinkedUp account</h1>
             {message && (
                 <div>
                     <p>{message}</p>
@@ -93,6 +104,7 @@ const LoginPage = () => {
                 </div>
             )}
             <div>
+
                 <div>
                     <label>Email Address</label>
                     <br />
@@ -106,6 +118,7 @@ const LoginPage = () => {
                     required
                     />
                 </div>
+
                 <div>
                     <label>Password</label>
                     <br />
@@ -118,6 +131,7 @@ const LoginPage = () => {
                     placeholder='Enter your password'
                     required
                     />
+
                     <div>
                         <input type="checkbox" id="remember-me"/>
                         <label htmlFor="remember-me">remember me</label>
@@ -130,6 +144,7 @@ const LoginPage = () => {
                     <button onClick={handleSubmit} disabled={isLoading}>
                         {isLoading ? 'Signining in...' : 'Sign in'}
                     </button>
+                    
                 </div>
 
             </div>
@@ -143,7 +158,11 @@ const LoginPage = () => {
             <p>
                 Don't have an account? <a href="/signup">Sign up for free</a>
             </p>
-        </div>
+
+          </div>
+        </section>
+
+</div>
     )
 };
 export default LoginPage;
