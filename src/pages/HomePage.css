@@ -1,0 +1,129 @@
+/* HomePage Styles */
+.homepage-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #134443;
+  background-image: url('../assets/Group 11.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 8vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.pitch-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 4vh;
+}
+
+.pitch-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.pitch-highlight {
+  color: #F67E04;
+}
+
+.pitch-description {
+  font-size: 1.25rem;
+  color: #FFFFFF;
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.get-started-button {
+  background: #F67E04;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(246, 126, 4, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.get-started-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(246, 126, 4, 0.4);
+  background: #F4C670;
+}
+
+.get-started-button:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .homepage-container {
+    padding-top: 6vh;
+  }
+  
+  .pitch-section {
+    padding: 1rem;
+    margin-top: 2vh;
+  }
+  
+  .pitch-title {
+    font-size: 2.5rem;
+  }
+  
+  .pitch-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .get-started-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-container {
+    padding-top: 4vh;
+  }
+  
+  .pitch-section {
+    margin-top: 1vh;
+  }
+  
+  .pitch-title {
+    font-size: 2rem;
+  }
+  
+  .pitch-description {
+    font-size: 1rem;
+  }
+  
+  .get-started-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
