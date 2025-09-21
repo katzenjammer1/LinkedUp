@@ -11,8 +11,12 @@ const Navbar = () => {
     const Navitems=[
     { label: 'Home', href: '/' },
     { label: 'Learn', href: '/learn' },
-    { label: 'Log In', href: '/login' },
   ];
+  if (user) {
+    Navitems.push({ label: "Logout", href: "/"})
+  }else {
+    Navitems.push({ label: "Login", href: "/login" });
+  }
    if (user) {
     Navitems.push({ label: "Dashboard", href: "/dashboard" });
   }else {
