@@ -1,0 +1,78 @@
+/* Navbar.css - Properly centered navbar */
+
+.page-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  padding: 1rem 0;
+  pointer-events: none;
+}
+
+.page-navigation .pill-nav-container {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+/* Ensure the nav itself is centered */
+.page-navigation .pill-nav {
+  position: relative;
+  
+  margin: 0 auto;
+}
+
+body {
+  padding-top: 80px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .page-navigation {
+    padding: 0.5rem 1rem;
+    left: 0;
+    right: 0;
+  }
+  
+  .page-navigation .pill-nav-container {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .page-navigation .pill-nav {
+    width: 100%;
+    max-width: none;
+    justify-content: space-between;
+  }
+  
+  body {
+    padding-top: 70px;
+  }
+}
+
+/* Additional styling for better visual separation */
+.page-navigation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.page-navigation .pill-nav-container {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
