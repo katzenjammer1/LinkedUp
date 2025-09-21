@@ -4,12 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
 import { updateUserProfile } from "../lib/userService";
 
+// imports for images
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../lib/firebase";
+import { updateProfile } from "@firebase/auth";
+
 const SetupProfilePage = () => {
   const navigate = useNavigate();
   const user = auth.currentUser;
 
   const [age, setAge] = useState("");
-  const [minAge, setMinAge] = useState(18); // fixed at 18
+  const [minAge, setMinAge] = useState(18); 
   const [maxAge, setMaxAge] = useState(30);
   const [availableDays, setAvailableDays] = useState([]);
   const [bio, setBio] = useState("");
@@ -17,6 +22,7 @@ const SetupProfilePage = () => {
   const [location, setLocation] = useState("");
   const [radius, setRadius] = useState(25);
   const [preferredActivities, setPreferredActivities] = useState("");
+  const [profilePic, setProfilePic] = useState(null);
   const [message, setMessage] = useState("");
 
   const toggleDay = (day) => {
@@ -32,6 +38,21 @@ const SetupProfilePage = () => {
       return;
     }
 
+    let profilePicURL = null;
+    if (profilePic) {
+        try {
+            const storageRef = ref(storage, `profilePictures/${user.uid}`);
+            await uploadBytes(storageRef, profilePic);
+            profilePicURL = await getDownloadURL(storageRef);
+
+            // update firebase auth profile
+            await updateProfile(user, { photoURL: profilePicURL});
+            } catch (err) {
+                console.error("Error uploading profile picture:", err);
+                setMessage("Failed to upload profile picture");
+                return;
+            }
+    }
     const updates = {
       age: parseInt(age),
       ageRange: { min: minAge, max: parseInt(maxAge) },
@@ -43,6 +64,7 @@ const SetupProfilePage = () => {
       preferredActivities: preferredActivities
         .split(",")
         .map((a) => a.trim()),
+      photoURL: profilePicURL || null,
     };
 
     const result = await updateUserProfile(user.uid, updates);
@@ -64,6 +86,14 @@ const SetupProfilePage = () => {
       {message && <p>{message}</p>}
 
       <form onSubmit={handleSubmit}>
+        <div>
+            <label>Profile Picture</label>
+            <input 
+                type="file"
+                accept="image/*"
+                onChange={(e) => setProfilePic(e.target.files[0])}
+            />
+        </div>
         <div>
           <label>Age:</label>
           <input
