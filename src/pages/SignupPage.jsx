@@ -31,7 +31,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div>
+    <div style={{  width: '1440px', height: '900px', backgroundColor: '#134443'}}>
       <h1>Sign Up</h1>
       {message && <p>{message}</p>}
 

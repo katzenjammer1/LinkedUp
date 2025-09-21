@@ -81,7 +81,7 @@ const SetupProfilePage = () => {
   };
 
   return (
-    <div>
+    <div style={{  width: '1440px', height: '900px', backgroundColor: '#134443'}}>
       <h1>Setup Profile</h1>
       {message && <p>{message}</p>}
 
