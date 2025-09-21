@@ -166,19 +166,21 @@ export default function DashboardPage() {
         <section className="dashboard-card places-card">
           <div className="card-header">
             <h2>Recommended Places</h2>
-            <button>View All</button>
+            <button className="view-all-btn">View All</button>
           </div>
           <div className="places-grid">
-            {recommendedPlaces.map(place => (
-              <div key={place.id} className="place-item">
-                <img src={place.image} alt={place.name} />
+          {recommendedPlaces.map(place => (
+            <div key={place.id} className="place-item">
+              <img src={place.image} alt={place.name} className="place-image" />
+              <div className="place-info">
                 <h4>{place.name}</h4>
-                <p>{place.category}</p>
-                <p>Rating: {place.rating}</p>
-                <p>{place.description}</p>
+                <p className="place-category">{place.category}</p>
+                <p className="place-rating">Rating: {place.rating}</p>
+                <p className="place-description">{place.description}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
         </section>
       </div>
 
